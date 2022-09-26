@@ -1,3 +1,8 @@
+## 1.0.0+1
+
+- Update `build:gradle` version.
+- Change android dependencies set `android-retrofuture`. 
+
 ## 1.0.0
 
 - Now supporting all platforms Windows, Linux, macOS, Android, iOS & Web.
