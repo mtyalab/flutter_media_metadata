@@ -1,3 +1,7 @@
+## 1.0.0+2
+
+- Add IOException for `retriever.release()` because build error in ANDROID SDK 33.
+
 ## 1.0.0+1
 
 - Update `build:gradle` version.
