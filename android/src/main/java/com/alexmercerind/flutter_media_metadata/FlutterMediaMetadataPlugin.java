@@ -43,7 +43,7 @@ public class FlutterMediaMetadataPlugin implements FlutterPlugin, MethodCallHand
           try {
             retriever.release();
           } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("FlutterMediaMetadata", "Error releasing MetadataRetriever", e);
           }
           new Handler(Looper.getMainLooper())
               .post(new Runnable() {
