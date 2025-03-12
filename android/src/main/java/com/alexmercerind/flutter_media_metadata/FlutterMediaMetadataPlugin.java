@@ -3,12 +3,14 @@ package com.alexmercerind.flutter_media_metadata;
 import java.util.HashMap;
 import java.lang.Runnable;
 import java9.util.concurrent.CompletableFuture;
+import java.io.IOException;
 
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import android.util.Log;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
@@ -39,7 +41,11 @@ public class FlutterMediaMetadataPlugin implements FlutterPlugin, MethodCallHand
           final HashMap<String, Object> response = new HashMap<String, Object>();
           response.put("metadata", retriever.getMetadata());
           response.put("albumArt", retriever.getAlbumArt());
-          retriever.release();
+          try {
+            retriever.release();
+          } catch (IOException e) {
+            Log.e("FlutterMediaMetadata", "Error releasing MetadataRetriever", e);
+          }
           new Handler(Looper.getMainLooper())
               .post(new Runnable() {
                 @Override
